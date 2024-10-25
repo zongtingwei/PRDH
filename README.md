@@ -1,7 +1,6 @@
 # PRDH_FS
 PRDH code for solving multi-objective feature selection problems in classification without using PLATEMO
 ### Abstract:
-Reference: Wang, Peng, et al. "Differential evolution-based feature selection: A niching-based multiobjective approach." IEEE Transactions on Evolutionary Computation 27.2 (2022): 296-310.
-}
+Reference: Jiao R, Xue B, Zhang M. Solving multi-objective feature selection problems in classification via problem reformulation and duplication handling[J]. IEEE Transactions on Evolutionary Computation, 2022.
 ###
 you can use the main_prdh.m to run this algorithm.
