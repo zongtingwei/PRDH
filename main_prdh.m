@@ -19,9 +19,9 @@ global sizep
 sizep = 300; % size of population
 %%%%%%%%%%
 global LOOCV
-LOOCV = 1; % use 10fold when LOOCV = 1
+LOOCV = 1; % use 5fold when LOOCV = 1
 global fold
-fold = 10;
+fold = 5;
 %%%%%%%%%%
 if LOOCV == 1 
     iterator = 5;
@@ -45,7 +45,7 @@ for data = 1:length(dataNameArray)
         dataName = dataNameArray{data};
         if LOOCV == 1
             fprintf('LOOCV\n');
-            [train_F,train_L,test_F,test_L] = DIVDATA10fold(dataName, i);  %read data
+            [train_F,train_L,test_F,test_L] = DIVDATA5fold(dataName, i);  %read data
         else
             [train_F,train_L,test_F,test_L] = DIVDATA37(dataName);
         end
