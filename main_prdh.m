@@ -1,5 +1,5 @@
-% the main function of SM-MOEA
-% the data set  is in the file /dataset  eg: dataset/9Tumor.mat 
+% the main function of PRDH
+% the data set  is in the file /dataset  eg: dataset/colon.mat 
 % the results are saved as a .mat file, and main results are:
 %     unionPF is the PF of the final population
 %     unionPFfit is the object function (size of features and the error rate on test set)
