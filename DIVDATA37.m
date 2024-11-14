@@ -4,13 +4,12 @@ load(file)
 
 dataMat=ins;
 len=size(dataMat,1);
-%¹éÒ»»¯
+%å½’ä¸€åŒ–
 maxV = max(dataMat);
 minV = min(dataMat);
 range = maxV-minV;
 newdataMat = (dataMat-repmat(minV,[len,1]))./(repmat(range,[len,1]));
-
-Indices   =  crossvalind('Kfold', length(lab), 10);
+Indices   =  crossvalind('Kfold', length(lab), 5);
 site = find(Indices==1|Indices==2|Indices==3);
 test_F = newdataMat(site,:);
 test_L = lab(site);
