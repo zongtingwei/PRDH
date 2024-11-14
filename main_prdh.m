@@ -19,15 +19,11 @@ global sizep
 sizep = 300; % size of population
 %%%%%%%%%%
 global LOOCV
-LOOCV = 1; % use 5fold when LOOCV = 1
+LOOCV = 2; % use 5fold when LOOCV = 1
 global fold
 fold = 5;
 %%%%%%%%%%
-if LOOCV == 1 
-    iterator = 5;
-else
-    iterator = 0;
-end
+iterator = 5;
 global CNTTIME
 CNTTIME = maxFES*iterator;
 for data = 1:length(dataNameArray)
@@ -40,6 +36,15 @@ for data = 1:length(dataNameArray)
     unionPF = [];
     unionPFfit = [];
     aveunionPF = [0 0];
+    trainPF = [];
+    trainPFfit = [];
+
+    dataName = dataNameArray{data};
+    file = ['dataset/', dataName, '.mat'];
+    load(file);
+    dataMat=ins;
+    numFeatures = size(dataMat, 2)
+
     for i = 1:iterator
         fprintf('-----Now: %d-----\n',i);
         dataName = dataNameArray{data};
@@ -59,6 +64,7 @@ for data = 1:length(dataNameArray)
         unionPF = [unionPF;Tgood];
         tempE = 0;
         tempF = 0;
+
         for j = 1:size(Tgood,1) % test population "unionPF" on test set
             FeatureSubset = Tgood(j,:);
             CInsTrain = train_F;
@@ -71,14 +77,34 @@ for data = 1:length(dataNameArray)
                     Popscore = Popscore+1;
                 end
             end
-            temp1 = 1-Popscore/size(test_F,1);
-            temp2 = sum(FeatureSubset);
-            tempE = tempE + temp1;
-            tempF = tempF + temp2;
-            unionPFfit = [unionPFfit;[temp1 temp2]]; %unionPFfit 
+           temp1 = 1 - Popscore / size(test_F,1);
+            temp2 = sum(FeatureSubset) / numFeatures; % Normalize the number of features by the total number of features
+            if temp2 > 0 % Only consider particles with non-zero features
+                unionPFfit = [unionPFfit; [temp1 temp2]]; %unionPFfit  
+            end
         end
         errorOnTest(i,1) = tempE/size(Tgood,1); %errorOnTest
         errorOnTest(i,2) = tempF/size(Tgood,1);
+
+        % Evaluate on training set
+        for j = 1:size(Tgood,1)
+            FeatureSubset = Tgood(j,:);
+            CInsTrain = train_F;
+            CInsTrain(:,~FeatureSubset) = 0;
+            mdl = ClassificationKNN.fit(CInsTrain, train_L, 'NumNeighbors', 5);
+            [label] = predict(mdl, CInsTrain);
+            Popscore = 0;
+            for k = 1:size(CInsTrain,1)
+                if label(k) == train_L(k)
+                    Popscore = Popscore + 1;
+                end
+            end
+            temp1 = 1 - Popscore / size(CInsTrain,1);
+            temp2 = sum(FeatureSubset) / numFeatures; % Normalize the number of features by the total number of features
+            if temp2 > 0 % Only consider particles with non-zero features
+                trainPFfit = [trainPFfit; [temp1 temp2]]; %unionPFfit 
+            end
+        end
         aveTrain1 = aveTrain1 + outcome{i,6}(1);
         aveTrain2 = aveTrain2 + outcome{i,6}(2);
     end
@@ -87,14 +113,18 @@ for data = 1:length(dataNameArray)
     aveTrain2 = aveTrain2/iterator;
     [FrontNOunion,~] = NDSort(unionPFfit(:,1:2),size(unionPFfit,1));
     siteunionPF = find(FrontNOunion ==1);  
-    aveunionPF = mean(unionPFfit(siteunionPF,:)); %
-    disp(min(unionPFfit(:,1)));
-    clear CLinsTrain label mdl Popscore temp1 temp2 tempE tempF test_F test_L train_F train_L j k
-    savename = [algorithmName '-' dataNameArray{data}]; 
-    save(savename);% the results is saved 
-    % unionPF is the PF of the final population
-    % unionPFfit is the object function (size of features and the error rate on test set)
+    aveunionPF = mean(unionPFfit(siteunionPF,:)); 
 
-    % Output the First Pareto Front
+    % Output the First Pareto Front on test set
+    fprintf('Outputting the First Pareto Front on Test Set:\n');
+    disp(unionPFfit);
+
+    % Save the results
+    savename = [algorithmName '-' dataNameArray{data}];
+    save(savename, 'unionPF', 'unionPFfit'); % Save test set Pareto front
+
+    % Output and save the First Pareto Front on training set
+    fprintf('Outputting the First Pareto Front on Training Set:\n');
+    disp(trainPFfit);
 end
 toc;
