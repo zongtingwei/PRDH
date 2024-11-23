@@ -1,4 +1,4 @@
-function Offspring = OffspringReproduction(Parent)
+function Offspring = OffspringReproduction(Parent, Problem)
     %% Parameter setting
     [proC,disC,proM,disM] = deal(1, 20, 1, 20);
     
@@ -11,13 +11,10 @@ function Offspring = OffspringReproduction(Parent)
     Parent1 = Parent(1:floor(end/2), :);
     Parent2 = Parent(floor(end/2)+1:floor(end/2)*2,:);
     [N,D]   = size(Parent1);
-    Problem = PROBLEM.Current();
     
     switch Problem.encoding
         case 'binary'
             %% Genetic operators for binary encoding
-            % Uniform crossover
-            %k = rand(N,D) < 0.5;
             % One point crossover
             k = repmat(1:D, N, 1) > repmat(randi(D, N, 1), 1, D);
             k(repmat(rand(N,1)>proC,1,D)) = false;
@@ -83,6 +80,6 @@ function Offspring = OffspringReproduction(Parent)
         %% get unique offspring and individuals (function evaluated)
         Offspring = unique(Offspring, 'rows');
         Offspring = Offspring(sum(Offspring,2)>0, 1:end);
-        Offspring = SOLUTION(Offspring);
+        Offspring = SOLUTION(Offspring, zeros(size(Offspring,1), 2), zeros(size(Offspring,1), 1));
     end
 end
