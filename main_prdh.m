@@ -113,21 +113,25 @@ for data = 1:length(dataNameArray)
     aver_errorOnTest = mean(errorOnTest); %
     aveTrain1 = aveTrain1 / iterator;
     aveTrain2 = aveTrain2 / iterator;
-    [FrontNOunion, ~] = NDSort(unionPFfit(:, 1:2), size(unionPFfit, 1));
+    [FrontNOunion, FrontRank] = NDSort(unionPFfit(:, 1:2), size(unionPFfit, 1));
     siteunionPF = find(FrontNOunion == 1);  
+    firsttestFront = unionPFfit(siteunionPF, :);
+    [FrontNOtrain, FrontRank] = NDSort(trainPFfit(:, 1:2), size(trainPFfit, 1));
+    sitetrainPF = find(FrontNOtrain == 1);
+    firsttrainFront = trainPFfit(sitetrainPF, :);
     aveunionPF = mean(unionPFfit(siteunionPF, :)); 
 
     % Output the First Pareto Front on test set
     fprintf('Outputting the First Pareto Front on Test Set:\n');
-    disp(unionPFfit);
+    disp(firsttestFront);
 
     % Save the results
     savename = [algorithmName '-' dataNameArray{data}];
-    save(savename, 'unionPF', 'unionPFfit'); % Save test set Pareto front
+    save(savename, 'unionPF', 'unionPFfit', 'firsttestFront', 'firsttrainFront'); % Save test set Pareto front
 
     % Output and save the First Pareto Front on training set
     fprintf('Outputting the First Pareto Front on Training Set:\n');
-    disp(trainPFfit);
+    disp(firsttrainFront);
 end
 
 toc;
