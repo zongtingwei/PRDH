@@ -1,19 +1,20 @@
-function [train_F,train_L,test_F,test_L] = DIVDATA37(dataName)
-file = ['dataset/',dataName,'.mat'];
+function [train_F, train_L, test_F, test_L] = DIVDATA37(dataName)
+file = ['dataset/', dataName, '.mat'];
 load(file)
 
-dataMat=ins;
-len=size(dataMat,1);
-%归一化
+dataMat = ins;
+len = size(dataMat, 1);
 maxV = max(dataMat);
 minV = min(dataMat);
-range = maxV-minV;
-newdataMat = (dataMat-repmat(minV,[len,1]))./(repmat(range,[len,1]));
-Indices   =  crossvalind('Kfold', length(lab), 5);
-site = find(Indices==1|Indices==2|Indices==3);
-test_F = newdataMat(site,:);
-test_L = lab(site);
-site2 = find(Indices~=1&Indices~=2&Indices~=3);
-train_F = newdataMat(site2,:);
-train_L =lab(site2);
+range = maxV - minV;
+newdataMat = (dataMat - repmat(minV, [len, 1])) ./ (repmat(range, [len, 1]));
+lab = lab;
+indices = randperm(length(lab));
+splitIdx = round(0.7 * length(lab)); % 70% for training
+trainIdx = indices(1:splitIdx);
+testIdx = indices(splitIdx+1:end);
+train_F = newdataMat(trainIdx, :);
+train_L = lab(trainIdx);
+test_F = newdataMat(testIdx, :);
+test_L = lab(testIdx);
 end
