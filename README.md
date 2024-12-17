@@ -11,4 +11,4 @@ The implementation is based on the code of [SM-MOEA](https://github.com/BIMK/SM-
 ### Run:
 You can use the main_prdh.m and the 'colon.mat' file in the 'dataset' folder to run this algorithm.
 ### ⭐Star:
-If you find our work helpful, please consider giving us a ⭐!
+If you find this work helpful, please consider giving me a ⭐!
