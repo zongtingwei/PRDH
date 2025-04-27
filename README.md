@@ -1,5 +1,5 @@
 # PRDH_FS
-PRDH code for solving multi-objective feature selection problems in classification without using PLATEMO
+PRDH code for solving multi-objective feature selection problems in classification
 ### Abstract:
 Reference: Jiao R, Xue B, Zhang M. [Solving Multiobjective Feature Selection Problems in Classification via Problem Reformulation and Duplication Handling](https://ieeexplore.ieee.org/abstract/document/9925116)[J]. IEEE Transactions on Evolutionary Computation, 2022.
 ###
