@@ -9,6 +9,6 @@ Cheng F, Chu F, Xu Y, et al. [A Steering-Matrix-Based Multiobjective Evolutionar
 ### Acknowledgement:
 The implementation is based on the code of [SM-MOEA](https://github.com/BIMK/SM-MOEA) and [PRDH](https://github.com/RuwangJiao/PRDH) and [PLATEMO](https://github.com/BIMK/PlatEMO). Thanks to them.
 ### Run:
-You can use the main_prdh.m and the 'colon.mat' file in the 'dataset' folder to run this algorithm.
+You can use the main_prdh.m and the "colon.mat" file in the "dataset" folder to run this algorithm.
 ### ⭐Star:
 If you find this work helpful, please consider giving me a ⭐!
