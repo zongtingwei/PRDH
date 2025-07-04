@@ -69,9 +69,9 @@ end
 
 function Population = InitializePopulation(Problem)
     T = min(Problem.D, Problem.N * 3);
-    PopDec = zeros(Problem.N, Problem.D); % 决策变量
-    PopObj = zeros(Problem.N, 2); % 假设有两个目标，初始化为0
-    PopCon = zeros(Problem.N, 1); % 假设没有约束违反，初始化为0
+    PopDec = zeros(Problem.N, Problem.D); 
+    PopObj = zeros(Problem.N, 2); 
+    PopCon = zeros(Problem.N, 1); 
     
     for i = 1 : Problem.N
         k = randperm(T, 1);
@@ -79,6 +79,6 @@ function Population = InitializePopulation(Problem)
         PopDec(i, j) = 1;
     end
     
-    % 调用SOLUTION构造函数时提供决策变量、目标值和约束违反情况
+    
     Population = SOLUTION(PopDec, PopObj, PopCon);
 end
