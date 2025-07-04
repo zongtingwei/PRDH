@@ -6,7 +6,7 @@ PRDH: code for "Solving Multiobjective Feature Selection Problems in Classificat
 </h1>
 
 [![Platform](https://img.shields.io/badge/Platform-MATLAB-orange)](https://www.mathworks.com/products/matlab.html)
-[![Datasets](https://img.shields.io/badge/Dataset-feature_selection-green)](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
+[![Datasets](https://img.shields.io/badge/Datasets-feature_selection-green)](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
 
 [Source Code](https://github.com/zongtingwei/PRDH)
 | [Documentation](https://ieeexplore.ieee.org/abstract/document/9925116)
