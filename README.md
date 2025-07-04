@@ -6,11 +6,11 @@ PRDH: code for "Solving Multiobjective Feature Selection Problems in Classificat
 </h1>
 
 [![Platform](https://img.shields.io/badge/Platform-MATLAB-orange)](https://www.mathworks.com/products/matlab.html)
-[![Dataset](https://img.shields.io/badge/Dataset-feature_selection-green)](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
+[![Datasets](https://img.shields.io/badge/Dataset-feature_selection-green)](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
 
 [Source Code](https://github.com/zongtingwei/PRDH)
 | [Documentation](https://ieeexplore.ieee.org/abstract/document/9925116)
-| [Dataset](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
+| [Datasets](https://github.com/zongtingwei/Feature-Selection-FS-datasets)
 
 </div>
 <br>
@@ -44,14 +44,14 @@ This code was developed for feature selection tasks in classification. The frame
 > This implementation requires MATLAB. Ensure you have MATLAB installed on your system.
 
 > [!Note]
-> The code is based on SM-MOEA and PlatEMO. Please download the required libraries if necessary.
+> The code is based on MATLAB. Please download the required libraries if necessary.
 
 ### How to Run
 
 1. Download the code and dataset from the repository.
 2. Open MATLAB and set the working directory to the project root.
 3. Run the `main_prdh.m` script.
-4. You can choose the provided "colon.mat" file in the "dataset" folder for testing.
+4. You can choose the provided "colon.mat" file in the "dataset" folder for testing. (More datasets can be found in [Datasets](https://github.com/zongtingwei/Feature-Selection-FS-datasets))
 
 ```matlab
 % an example
