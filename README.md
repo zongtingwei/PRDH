@@ -74,7 +74,7 @@ Cheng F, Chu F, Xu Y, et al. [A Steering-Matrix-Based Multiobjective Evolutionar
 ###
 
 ## 🪪 License
-This project is based on the implementation of [SM-MOEA](https://github.com/BIMK/SM-MOEA) and [PlatEMO](https://github.com/BIMK/PlatEMO). Please refer to their respective licenses for details.
+This project is based on the implementation of [PRDH](https://github.com/RuwangJiao/PRDH), [SM-MOEA](https://github.com/BIMK/SM-MOEA) and [PlatEMO](https://github.com/BIMK/PlatEMO). Please refer to their respective licenses for details.
 
 ## ☎️ Contact
 If you encounter any issues or have questions regarding PRDH, please feel free to contact me.
