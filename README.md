@@ -19,7 +19,7 @@ PRDH: code for "Solving Multiobjective Feature Selection Problems in Classificat
 
 PRDH is a MATLAB-based evolutionary algorithm designed for solving multiobjective feature selection problems in classification tasks. It leverages problem reformulation and duplication handling to enhance the efficiency and effectiveness of the feature selection process.
 
-This implementation is based on the code of [SM-MOEA](https://github.com/BIMK/SM-MOEA) and [PlatEMO](https://github.com/BIMK/PlatEMO). Please refer to the original paper [Solving Multiobjective Feature Selection Problems in Classification via Problem Reformulation and Duplication Handling](https://ieeexplore.ieee.org/abstract/document/9925116) for detailed information about the algorithm's overview, methodology, and benchmark results.
+This implementation is based on the code of [PRDH](https://github.com/RuwangJiao/PRDH), [SM-MOEA](https://github.com/BIMK/SM-MOEA) and [PlatEMO](https://github.com/BIMK/PlatEMO). Please refer to the original paper [Solving Multiobjective Feature Selection Problems in Classification via Problem Reformulation and Duplication Handling](https://ieeexplore.ieee.org/abstract/document/9925116) for detailed information about the algorithm's overview, methodology, and benchmark results.
 
 This code was developed for feature selection tasks in classification. The framework can be adapted to other feature selection scenarios with minor modifications.
 
