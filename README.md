@@ -2,7 +2,7 @@
 <h1 align="center">
 </h1>
 <h1 align="center">
-PRDH: code for "Solving Multiobjective Feature Selection Problems in Classification via Problem Reformulation and Duplication Handling"
+PRDH: code for "Solving Multiobjective Feature Selection Problems in Classification via Problem Reformulation and Duplication Handling
 </h1>
 
 [![Platform](https://img.shields.io/badge/Platform-MATLAB-orange)](https://www.mathworks.com/products/matlab.html)
